@@ -35,11 +35,21 @@
     /**
      * Rotates element.
      * @private
-     * @param {object} element - The object will be rotated
-     * @param {number} batteryGraderotateAngle - The angle for rotating
+     * @param {object} digitElement - The object to slide
+     * @param {number} digitToShow - The digit to display
      */
-    function rotateElement(element, rotateAngle) {
-        element.style.transform = "rotate(" + rotateAngle + "deg)";
+    function slideDigit(digitElement, digitToShow) {
+    		// There are 12 digits on the strip. The first and last one are extra ones which are only shown partially.
+    		var digitSizePx = 903 / 12.0;
+    		var constantOffset = 110 - 46; // Positions the first number to the center of the background
+    		
+    		var currentDigit = Math.floor(digitToShow);
+    		
+    		var currentDigitRemainder = digitToShow % 1.0;
+    		
+    		var finalOffset = currentDigit + currentDigitRemainder * currentDigitRemainder * currentDigitRemainder * currentDigitRemainder;
+    		
+    		digitElement.style.top = -(finalOffset) * digitSizePx + constantOffset  + "px";
     }
 
     /**
@@ -48,16 +58,18 @@
      */
     function updateTime() {
         var dateTime = tizen.time.getCurrentDateTime(),
-            second = dateTime.getSeconds(),
-            minute = dateTime.getMinutes(),
-            hour = dateTime.getHours(),
-            elSecIndicator = document.querySelector("#time-second-indicator"),
-            elMinIndicator = document.querySelector("#time-min-indicator"),
-            elHourIndicator = document.querySelector("#time-hour-indicator");
+            secondToday = dateTime.getSeconds() + dateTime.getMinutes() * 60 + dateTime.getHours() * 3600,
+            minDigitLeft = document.querySelector("#time-min-digit-left"),
+            minDigitRight = document.querySelector("#time-min-digit-right"),
+            hourDigitLeft = document.querySelector("#time-hour-digit-left"),
+            hourDigitRight = document.querySelector("#time-hour-digit-right");
 
-        rotateElement(elSecIndicator, (second * 6));
-        rotateElement(elMinIndicator, (minute + (second / 60)) * 6);
-        rotateElement(elHourIndicator, (hour + (minute / 60) + (second / 3600)) * 30);
+        var minutesNow = (secondToday % 3600) / 60;
+        var hourNow = (secondToday / 3600);
+        	slideDigit(minDigitRight, minutesNow % 10.0);
+        	slideDigit(minDigitLeft, minutesNow / 10.0);
+        	slideDigit(hourDigitRight,  hourNow % 10.0);
+        	slideDigit(hourDigitLeft, hourNow / 10.0);
     }
 
     /**

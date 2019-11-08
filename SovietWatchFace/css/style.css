@@ -7,6 +7,7 @@
 body {
     margin: 0px auto;
     background-color: #222;
+    overflow: hidden;
 }
 
 #body-bg {
@@ -15,7 +16,7 @@ body {
     height: 100%;
     background-image: url('../image/background_app.png');
     overflow: hidden;
-    z-index: 0;
+    z-index: 4;
 }
 
 .info-indicator {
@@ -46,44 +47,129 @@ body {
 
 /*-------TIME-------*/
 
-#time-second-indicator {
+#background-hour-digit-left {
     position: absolute;
-    top: 0px;
-    left: 173.5px;
-    width: 13px;
-    height: 360px;
-    background-image: url('../image/second_indicator.png');
+    top: 110px;
+    left: 67px;
+    width: 48px;
+    height: 140px;
+    background-image: url('../image/number_background.png');
+    z-index: 2;
+}
+
+#background-hour-digit-right {
+    position: absolute;
+    top: 110px;
+    left: 120px;
+	width: 48px;
+    height: 140px;
+    background-image: url('../image/number_background.png');
+    z-index: 2;
+}
+
+#background-min-digit-left {
+    position: absolute;
+    top: 110px;
+    left: 191px;
+	width: 48px;
+    height: 140px;
+    background-image: url('../image/number_background.png');
+    z-index: 2;
+}
+
+#background-min-digit-right {
+    position: absolute;
+    top: 110px;
+    left: 244px;
+	width: 48px;
+    height: 140px;
+    background-image: url('../image/number_background.png');
+    z-index: 2;
+}
+
+/* Digits */
+
+#time-hour-digit-left {
+    position: absolute;
+    top: 110px;
+    left: 67px;
+    width: 44px;
+    height: 903px;
+    background-image: url('../image/numbers_top_bottom.png');
     z-index: 3;
 }
 
-#time-min-indicator {
+#time-hour-digit-right {
     position: absolute;
-    left: 177px;
-    width: 6px;
-    height: 360px;
-    background-image: url('../image/minute_indicator.png');
-    z-index: 4;
-    pointer-events: none;
+    top: 110px;
+    left: 120px;
+    width: 44px;
+    height: 903px;
+    background-image: url('../image/numbers_top_bottom.png');
+    z-index: 3;
 }
 
-#time-hour-indicator {
+#time-min-digit-left {
     position: absolute;
-    left: 177px;
-    width: 6px;
-    height: 360px;
-    background-image: url('../image/hour_indicator.png');
+    top: 110px;
+    left: 191px;
+	width: 44px;
+    height: 903px;
+    background-image: url('../image/numbers_top_bottom.png');
+    z-index: 3;
+}
+
+#time-min-digit-right {
+    position: absolute;
+    top: 110px;
+    left: 244px;
+    width: 44px;
+    height: 903px;
+    background-image: url('../image/numbers_top_bottom.png');
+    z-index: 3;
+}
+
+/* Foreground */
+
+
+#foreground-hour-digit-left {
+    position: absolute;
+    top: 110px;
+    left: 67px;
+    width: 48px;
+    height: 140px;
+    background-image: url('../image/digit_overlay.png');
     z-index: 5;
-    pointer-events: none;
 }
 
-#time-center-pin {
+#foreground-hour-digit-right {
     position: absolute;
-    top: 170px;
-    left: 170px;
-    width: 20px;
-    height: 20px;
-    background-image: url('../image/pin.png');
-    z-index: 6;
+    top: 110px;
+    left: 120px;
+	width: 48px;
+    height: 140px;
+	background-image: url('../image/digit_overlay.png');
+    z-index: 5;
+}
+
+#foreground-min-digit-left {
+    position: absolute;
+    top: 110px;
+    left: 191px;
+	width: 48px;
+    height: 140px;
+	background-image: url('../image/digit_overlay.png');
+    z-index: 5;
+}
+
+#foreground-min-digit-right {
+    position: absolute;
+    top: 110px;
+    left: 244px;
+	width: 48px;
+    height: 140px;
+	background-image: url('../image/digit_overlay.png');
+    z-index: 5;
 }
 
 /*-------BATTERY-------*/
