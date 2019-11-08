@@ -25,10 +25,7 @@
      */
     var ARR_COLOR = ["red", "orange", "yellow", "green", "blue"],
         ARR_MONTH = ["JANUARY", "FEBRUARY", "MARCH", "APRIL", "MAY", "JUNE", "JULY", "AUGUST", "SEPTEMBER", "OCTOBER", "NOVEMBER", "DECEMBER"],
-        //If you want to get weather data from another file or API, change this part.
-        URL_WEATHER_DATA = "./data/weatherData.json",
-        //If you want to get air pollution data from another file or API, change this part.
-        URL_AIR_POLLUTION_DATA = "./data/airPollutionData.xml",
+
         battery = navigator.battery || navigator.webkitBattery || navigator.mozBattery,
         updateTimer;
 
@@ -40,7 +37,7 @@
      */
     function slideDigit(digitElement, digitToShow) {
     		// There are 12 digits on the strip. The first and last one are extra ones which are only shown partially.
-    		var digitSizePx = 903 / 12.0;
+    		var digitSizePx = 907 / 12.0;
     		var constantOffset = 110 - 46; // Positions the first number to the center of the background
     		
     		var currentDigit = Math.floor(digitToShow);
@@ -125,117 +122,6 @@
     }
 
     /**
-     * When fail to get location data or weather, air pollution data,
-     * sets disable icon (GPS or WiFi).
-     * @private
-     * @param {string} iconName - The icon name for displaying
-     */
-    function setDisableIcon(iconName) {
-        var elAirPollIcon = document.querySelector("#air-icon"),
-            elAirPollStatus = document.querySelector("#air-status"),
-            elAirPollText = document.querySelector("#air-text");
-
-        elAirPollStatus.style.backgroundImage = "url('./image/no_" + iconName + "_icon.png')";
-        elAirPollIcon.style.backgroundImage = "";
-        elAirPollText.innerHTML = "";
-    }
-
-    /**
-     * Updates weather icon, status and text.
-     * @private
-     */
-    function updateWeather() {
-        /**
-         * xmlHttp - XMLHttpRequest object for get information about weather
-         */
-        var xmlHttp = new XMLHttpRequest(),
-            weatherInform,
-            elWeatherIcon = document.querySelector("#weather-icon"),
-            elWeatherText = document.querySelector("#weather-text"),
-            weatherIcon,
-            weatherText;
-
-        xmlHttp.overrideMimeType("application/json");
-        xmlHttp.open("GET", URL_WEATHER_DATA, false);
-        xmlHttp.onreadystatechange = function() {
-            // Checks responseText isn't empty
-            if (xmlHttp.responseText) {
-                // Parses responseText to JSON
-                weatherInform = JSON.parse(xmlHttp.responseText);
-                // Gets icon code from information
-                weatherIcon = weatherInform.weather[0].icon;
-                // Gets weather string from information
-                weatherText = weatherInform.weather[0].main;
-
-                elWeatherIcon.style.backgroundImage = "url('./image/weather_icon/" + weatherIcon + ".png')";
-                elWeatherText.innerHTML = weatherText;
-            }
-            // If reponseText is empty, set no wifi icon.
-            else {
-                setDisableIcon("wifi");
-            }
-        };
-
-        xmlHttp.send();
-    }
-
-    /**
-     * Updates air pollution icon, status and text.
-     * @private
-     */
-    function updateAirPolution() {
-        /**
-         * xmlHttp - XMLHttpRequest object for get information about air pollution
-         */
-        var xmlHttp = new XMLHttpRequest(),
-            airPollutionInform,
-            elAirPollIcon = document.querySelector("#air-icon"),
-            elAirPollStatus = document.querySelector("#air-status"),
-            elAirPollText = document.querySelector("#air-text"),
-            airPollLevel,
-            airPollGrade,
-            statusColor;
-
-        xmlHttp.open("GET", URL_AIR_POLLUTION_DATA, false);
-        xmlHttp.onreadystatechange = function() {
-            // Checks responseXML isn't empty
-            if (xmlHttp.responseXML) {
-                airPollutionInform = xmlHttp.responseXML;
-                // Gets air pollution level from pm10value node in responseXML
-                airPollLevel = airPollutionInform.getElementsByTagName("pm10Value")[0].childNodes[0].nodeValue;
-                elAirPollText.innerHTML = airPollLevel;
-
-                if (airPollLevel === "-") {
-                    airPollGrade = 4;
-                } else {
-                    elAirPollText.innerHTML += "AQI";
-                    if (airPollLevel < 50) {
-                        airPollGrade = 4;
-                    } else if (airPollLevel < 150) {
-                        airPollGrade = 3;
-                    } else if (airPollLevel < 200) {
-                        airPollGrade = 2;
-                    } else if (airPollLevel < 300) {
-                        airPollGrade = 1;
-                    } else {
-                        airPollGrade = 0;
-                    }
-                }
-
-                statusColor = ARR_COLOR[airPollGrade];
-                elAirPollIcon.style.backgroundImage = "url('./image/color_status/air_pollution_icon_" + statusColor + ".png')";
-                elAirPollStatus.style.backgroundImage = "url('./image/color_status/" + statusColor + "_indicator.png')";
-            }
-            // If reponseXML is empty, set no wifi icon.
-            else {
-                setDisableIcon("wifi");
-            }
-        };
-
-        xmlHttp.send();
-    }
-
-    /**
      * Updates battery icon and text.
      * @private
      */
@@ -262,17 +148,10 @@
     }
 
     /**
-     * Update weather and air pollution information.
-     * If can't get location information, displays no GPS icon.
-     * @private
+     * Called when the visibility changes.
      */
     function updateInformation() {
-        navigator.geolocation.getCurrentPosition(
-            function() {
-                updateWeather();
-                updateAirPolution();
-            },
-            setDisableIcon("gps"));
+        // Nothing to do here
     }
 
     /**

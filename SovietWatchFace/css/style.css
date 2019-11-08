@@ -1,280 +1,271 @@
 /*-------INITIAL SETTING-------*/
-
 * {
-    -webkit-tap-highlight-color: transparent;
+	-webkit-tap-highlight-color: transparent;
 }
 
 body {
-    margin: 0px auto;
-    background-color: #222;
-    overflow: hidden;
+	margin: 0px auto;
+	background-color: #222;
+	overflow: hidden;
 }
 
 #body-bg {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background-image: url('../image/background_app.png');
-    overflow: hidden;
-    z-index: 4;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background-image: url('../image/background_app.png');
+	overflow: hidden;
+	z-index: 4;
 }
 
 .info-indicator {
-    position: absolute;
-    width: 88px;
-    height: 88px;
-    background-size: contain;
-    background-repeat: no-repeat;
+	position: absolute;
+	width: 88px;
+	height: 88px;
+	background-size: contain;
+	background-repeat: no-repeat;
 }
 
 .info-icon {
-    position: absolute;
-    width: 73px;
-    height: 73px;
-    background-size: contain;
-    background-repeat: no-repeat;
+	position: absolute;
+	width: 73px;
+	height: 73px;
+	background-size: contain;
+	background-repeat: no-repeat;
 }
 
 .info-text {
-    position: absolute;
-    width: 66px;
-    height: 20px;
-    font-size: 20px;
-    text-align: center;
-    color: rgb(255, 255, 255);
-    display: none;
+	position: absolute;
+	width: 66px;
+	height: 20px;
+	font-size: 20px;
+	text-align: center;
+	color: rgb(255, 255, 255);
+	display: none;
 }
 
 /*-------TIME-------*/
-
 #background-hour-digit-left {
-    position: absolute;
-    top: 110px;
-    left: 67px;
-    width: 48px;
-    height: 140px;
-    background-image: url('../image/number_background.png');
-    z-index: 2;
+	position: absolute;
+	top: 110px;
+	left: 67px;
+	width: 48px;
+	height: 140px;
+	background-image: url('../image/number_background.png');
+	z-index: 2;
 }
 
 #background-hour-digit-right {
-    position: absolute;
-    top: 110px;
-    left: 120px;
+	position: absolute;
+	top: 110px;
+	left: 120px;
 	width: 48px;
-    height: 140px;
-    background-image: url('../image/number_background.png');
-    z-index: 2;
+	height: 140px;
+	background-image: url('../image/number_background.png');
+	z-index: 2;
 }
 
 #background-min-digit-left {
-    position: absolute;
-    top: 110px;
-    left: 191px;
+	position: absolute;
+	top: 110px;
+	left: 191px;
 	width: 48px;
-    height: 140px;
-    background-image: url('../image/number_background.png');
-    z-index: 2;
+	height: 140px;
+	background-image: url('../image/number_background.png');
+	z-index: 2;
 }
 
 #background-min-digit-right {
-    position: absolute;
-    top: 110px;
-    left: 244px;
+	position: absolute;
+	top: 110px;
+	left: 244px;
 	width: 48px;
-    height: 140px;
-    background-image: url('../image/number_background.png');
-    z-index: 2;
+	height: 140px;
+	background-image: url('../image/number_background.png');
+	z-index: 2;
 }
 
 /* Digits */
-
 #time-hour-digit-left {
-    position: absolute;
-    top: 110px;
-    left: 67px;
-    width: 44px;
-    height: 903px;
-    background-image: url('../image/numbers_top_bottom.png');
-    z-index: 3;
+	position: absolute;
+	top: 110px;
+	left: 67px;
+	width: 47px;
+	height: 903px;
+	background-image: url('../image/numbers_top_bottom.png');
+	z-index: 3;
 }
 
 #time-hour-digit-right {
-    position: absolute;
-    top: 110px;
-    left: 120px;
-    width: 44px;
-    height: 903px;
-    background-image: url('../image/numbers_top_bottom.png');
-    z-index: 3;
+	position: absolute;
+	top: 110px;
+	left: 120px;
+	width: 47px;
+	height: 903px;
+	background-image: url('../image/numbers_top_bottom.png');
+	z-index: 3;
 }
 
 #time-min-digit-left {
-    position: absolute;
-    top: 110px;
-    left: 191px;
-	width: 44px;
-    height: 903px;
-    background-image: url('../image/numbers_top_bottom.png');
-    z-index: 3;
+	position: absolute;
+	top: 110px;
+	left: 191px;
+	width: 47px;
+	height: 903px;
+	background-image: url('../image/numbers_top_bottom.png');
+	z-index: 3;
 }
 
 #time-min-digit-right {
-    position: absolute;
-    top: 110px;
-    left: 244px;
-    width: 44px;
-    height: 903px;
-    background-image: url('../image/numbers_top_bottom.png');
-    z-index: 3;
+	position: absolute;
+	top: 110px;
+	left: 244px;
+	width: 47px;
+	height: 903px;
+	background-image: url('../image/numbers_top_bottom.png');
+	z-index: 3;
 }
 
 /* Foreground */
-
-
 #foreground-hour-digit-left {
-    position: absolute;
-    top: 110px;
-    left: 67px;
-    width: 48px;
-    height: 140px;
-    background-image: url('../image/digit_overlay.png');
-    z-index: 5;
+	position: absolute;
+	top: 110px;
+	left: 67px;
+	width: 48px;
+	height: 140px;
+	background-image: url('../image/digit_overlay.png');
+	z-index: 5;
 }
 
 #foreground-hour-digit-right {
-    position: absolute;
-    top: 110px;
-    left: 120px;
+	position: absolute;
+	top: 110px;
+	left: 120px;
 	width: 48px;
-    height: 140px;
+	height: 140px;
 	background-image: url('../image/digit_overlay.png');
-    z-index: 5;
+	z-index: 5;
 }
 
 #foreground-min-digit-left {
-    position: absolute;
-    top: 110px;
-    left: 191px;
+	position: absolute;
+	top: 110px;
+	left: 191px;
 	width: 48px;
-    height: 140px;
+	height: 140px;
 	background-image: url('../image/digit_overlay.png');
-    z-index: 5;
+	z-index: 5;
 }
 
 #foreground-min-digit-right {
-    position: absolute;
-    top: 110px;
-    left: 244px;
+	position: absolute;
+	top: 110px;
+	left: 244px;
 	width: 48px;
-    height: 140px;
+	height: 140px;
 	background-image: url('../image/digit_overlay.png');
-    z-index: 5;
+	z-index: 5;
 }
 
 /*-------BATTERY-------*/
-
 #battery-indicator {
-    top: 114px;
-    left: 200px;
-    background-image: url('../image/status_indicator.png');
-    z-index: 0;
+	top: 114px;
+	left: 200px;
+	background-image: url('../image/status_indicator.png');
+	z-index: 0;
 }
 
 #battery-status {
-    top: 114px;
-    left: 200px;
-    z-index: 1;
+	top: 114px;
+	left: 200px;
+	z-index: 1;
 }
 
 #battery-icon {
-    top: 122px;
-    left: 208px;
-    z-index: 0;
+	top: 122px;
+	left: 208px;
+	z-index: 0;
 }
 
 #battery-text {
-    top: 146px;
-    left: 211px;
-    z-index: 0;
+	top: 146px;
+	left: 211px;
+	z-index: 0;
 }
 
 /*-------AIR-------*/
-
 #air-indicator {
-    top: 114px;
-    left: 72px;
-    background-image: url('../image/status_indicator.png');
-    z-index: 0;
+	top: 114px;
+	left: 72px;
+	background-image: url('../image/status_indicator.png');
+	z-index: 0;
 }
 
 #air-status {
-    top: 114px;
-    left: 72px;
-    z-index: 1;
+	top: 114px;
+	left: 72px;
+	z-index: 1;
 }
 
 #air-icon {
-    top: 122px;
-    left: 80px;
-    z-index: 0;
+	top: 122px;
+	left: 80px;
+	z-index: 0;
 }
 
 #air-text {
-    top: 146px;
-    left: 83px;
-    z-index: 0;
+	top: 146px;
+	left: 83px;
+	z-index: 0;
 }
 
 /*-------CALENDAR-------*/
-
 #calendar-month {
-    position: absolute;
-    top: 235px;
-    left: 117px;
-    width: 86px;
-    height: 17px;
-    font-size: 15px;
-    font-weight: bold;
-    color: rgb(255, 255, 255);
-    text-align: right;
-    z-index: 0;
+	position: absolute;
+	top: 235px;
+	left: 117px;
+	width: 86px;
+	height: 17px;
+	font-size: 15px;
+	font-weight: bold;
+	color: rgb(255, 255, 255);
+	text-align: right;
+	z-index: 0;
 }
 
 #calendar-date {
-    position: absolute;
-    top: 229px;
-    left: 203px;
-    width: 28px;
-    height: 23px;
-    font-size: 21px;
-    font-weight: bold;
-    color: rgb(219, 211, 3);
-    text-align: center;
-    z-index: 0;
+	position: absolute;
+	top: 229px;
+	left: 203px;
+	width: 28px;
+	height: 23px;
+	font-size: 21px;
+	font-weight: bold;
+	color: rgb(219, 211, 3);
+	text-align: center;
+	z-index: 0;
 }
 
 /*-------WEATHER-------*/
-
 #weather-icon {
-    position: absolute;
-    top: 257px;
-    left: 145px;
-    width: 26px;
-    height: 26px;
-    background-size: 26px 26px;
-    background-repeat: no-repeat;
-    z-index: 0;
+	position: absolute;
+	top: 257px;
+	left: 145px;
+	width: 26px;
+	height: 26px;
+	background-size: 26px 26px;
+	background-repeat: no-repeat;
+	z-index: 0;
 }
 
 #weather-text {
-    position: absolute;
-    top: 262px;
-    left: 171px;
-    width: 78px;
-    height: 17px;
-    font-size: 12px;
-    color: rgb(255, 255, 255);
-    text-align: left;
-    z-index: 0;
+	position: absolute;
+	top: 262px;
+	left: 171px;
+	width: 78px;
+	height: 17px;
+	font-size: 12px;
+	color: rgb(255, 255, 255);
+	text-align: left;
+	z-index: 0;
 }
