@@ -269,3 +269,23 @@ body {
 	text-align: left;
 	z-index: 0;
 }
+
+#battery-grey-line {
+	position: absolute;
+	top: 289px;
+	left: 67px;
+	width: 225px;
+	height: 3px;
+	background-image: url('../image/grey_line.png');
+	z-index: 2;
+}
+
+#battery-red-line {
+	position: absolute;
+	top: 289px;
+	left: 67px;
+	width: 225px;
+	height: 3px;
+	background-image: url('../image/red_line.png');
+	z-index: 3;
+}
