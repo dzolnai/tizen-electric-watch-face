@@ -17,20 +17,8 @@
 /*global tau */
 
 (function() {
-	/**
-	 * ARR_COLOR - Color string array for displaying air pollution and battery
-	 * level. ARR_MONTH - Month string array for displaying month-text.
-	 * URL_WEATHER_DATA - Address of file contains weather information.
-	 * URL_AIR_POLLUTION_DATA - Address of file contains air pollution
-	 * information. battery - Object contains the devices's battery information.
-	 * updateTimer - Object contains date update timer
-	 */
-	var ARR_COLOR = [ "red", "orange", "yellow", "green", "blue" ], ARR_MONTH = [
-			"JANUARY", "FEBRUARY", "MARCH", "APRIL", "MAY", "JUNE", "JULY",
-			"AUGUST", "SEPTEMBER", "OCTOBER", "NOVEMBER", "DECEMBER" ],
 
-	battery = navigator.battery || navigator.webkitBattery
-			|| navigator.mozBattery, updateTimer;
+	var battery = navigator.battery || navigator.webkitBattery || navigator.mozBattery;
 
 	/**
 	 * Rotates element.
@@ -62,8 +50,6 @@
 			duration : 1000,
 			ease: 'linear'
 		});
-		// digitElement.style.top = -(finalOffset) * digitSizePx +
-		// constantOffset + "px";
 	}
 
 	/**
@@ -93,34 +79,17 @@
 	 * @private
 	 */
 	function updateBattery() {
-		var elBatteryIcon = document.querySelector("#battery-icon"), elBatteryStatus = document
-				.querySelector("#battery-status"), elBatteryText = document
-				.querySelector("#battery-text"), batteryLevel = Math
-				.floor(battery.level * 100), batteryGrade = Math
-				.floor(batteryLevel / 20), statusColor = ARR_COLOR[batteryGrade];
-
-		elBatteryIcon.style.backgroundImage = "url('./image/color_status/battery_icon_"
-				+ statusColor + ".png')";
-		elBatteryStatus.style.backgroundImage = "url('./image/color_status/"
-				+ statusColor + "_indicator.png')";
-		elBatteryText.innerHTML = batteryLevel + "%";
-	}
-
-	/**
-	 * Updates date and time.
-	 * 
-	 * @private
-	 */
-	function updateWatch() {
-		updateTime();
+		var line = document.querySelector("#battery-red-line");
+		console.log("BATTERYLEVEL " + battery.level)
+		var width = (1 - battery.level) * 225; 
+		line.style.width = width + "px";
 	}
 
 	/**
 	 * Called when the visibility changes.
 	 */
 	function updateInformation() {
-		var line = document.querySelector("#battery-red-line");
-		line.style.width = "60px";
+		updateBattery();
 
 	}
 	
@@ -164,18 +133,11 @@
 	 * @private
 	 */
 	function bindEvents() {
-		/**
-		 * elBattery - Element contains battery icon, status and text elAir -
-		 * Element contains air pollution icon, status and text
-		 */
-		var elBattery = document.querySelector("#body-battery"), elAir = document
-				.querySelector("#body-air");
-
 		// Adds eventListener to update the screen immediately when the device
 		// wakes up.
 		document.addEventListener("visibilitychange", function() {
 			if (!document.hidden) {
-				updateWatch();
+				updateTime();
 				updateInformation();
 			}
 		});
@@ -183,7 +145,7 @@
 		// Adds event listeners to update watch screen when the time zone is
 		// changed.
 		tizen.time.setTimezoneChangeListener(function() {
-			updateWatch();
+			updateTime();
 			updateInformation();
 		});
 
@@ -193,18 +155,6 @@
 		battery.addEventListener("chargingtimechange", updateBattery);
 		battery.addEventListener("dischargingtimechange", updateBattery);
 		battery.addEventListener("levelchange", updateBattery);
-
-		// Adds event listeners to change displaying child element when the
-		// battery element is clicked.
-		elBattery.addEventListener("click", function() {
-			toggleElement("#battery-icon", "#battery-text");
-		});
-
-		// Adds event listeners to change displaying child element when the air
-		// pollution element is clicked.
-		elAir.addEventListener("click", function() {
-			toggleElement("#air-icon", "#air-text");
-		});
 	}
 
 	/**
@@ -215,7 +165,7 @@
 	 */
 	function init() {
 		bindEvents();
-		updateWatch();
+		updateTime();
 		updateInformation();
 		setInterval(function() {
 			updateTime();
