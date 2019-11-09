@@ -125,11 +125,9 @@
 	}
 	
 	function slideRedLine() {
-		console.log("SLIDELINE");
 		var line = document.querySelector("#battery-red-line");
-		line.style.width = width;
 
-		var width = line.width;
+		var width = parseInt(line.style.width, 10); 
 		var t = tau.animation.target;
 
 		t(line).tween({
@@ -137,6 +135,7 @@
 		}, {
 			duration : 3000
 		});
+		line.style.display = "block";
 
 	}
 
