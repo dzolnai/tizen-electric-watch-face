@@ -40,7 +40,7 @@
 
 		var currentDigitRemainder = digitToShow % 1.0;
 
-		var finalOffset = currentDigit + currentDigitRemainder	* currentDigitRemainder * currentDigitRemainder* currentDigitRemainder;
+		var finalOffset = currentDigit + currentDigitRemainder * currentDigitRemainder * currentDigitRemainder * currentDigitRemainder;
 
 		var t = tau.animation.target;
 
